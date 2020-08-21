@@ -93,6 +93,10 @@ We use [SemVer](http://semver.org/) for versioning.
 * **Aakash Agarwal** - *React Native* - [Aakash310](https://github.com/Aakash310)
 * **Uttaran Sarkar** - *Idea and React Native* - [uttaransarkar](https://github.com/uttaransarkar)
 
+##Design
+
+https://drive.google.com/file/d/16tAzU78Q6xQBODfceh6q5wmUokv_S-v4/view
+
 
 
 ## License 📜
