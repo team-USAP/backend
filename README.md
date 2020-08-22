@@ -10,6 +10,8 @@
     
 Vaccination System Backend for solution of effective vaccination distribution.
 
+![PythonCI](https://github.com/team-USAP/backend/workflows/PythonCI/badge.svg?branch=master)
+
 ## About  💫
 
 The Aim of the project is to provide a backend for mobile application and make a sustainable backend for effective vaccination distribution between citizens and Vaccine Distribution Entities
