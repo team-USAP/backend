@@ -24,8 +24,8 @@ COPY ./entrypoint.sh .
 COPY . ./usr/src/app
 
 # change permission
-RUN ["chmod", "+x", "/usr/src/app/entrypoint.sh"]
-RUN ["ls", "usr/src/app"]
+# RUN ["chmod", "+x", "/usr/src/app/entrypoint.sh"]
 
 # run entrypoint.sh
-ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
+# ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
+RUN python usr/src/app/manage.py migrate
