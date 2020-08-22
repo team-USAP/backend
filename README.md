@@ -16,8 +16,7 @@ The Aim of the project is to provide a backend for mobile application and make a
 
 
 ### Some Salient Features of Project 🔭
-
--- **pending** --
+    --  TBD --
 
 
 
