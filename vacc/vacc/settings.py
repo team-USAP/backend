@@ -10,18 +10,20 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-from pathlib import Path
+import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'yxuot*)&&8%_yl3s@k=9yu1ppzx9$v0i+2q8kz2iiyjw0h4++7'
-
+SECRET_KEY = os.environ.get('SECRET_KEY', 'secret-key-of-at-least-50-characters-to-pass-check-deploy')
+print(SECRET_KEY)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -73,10 +75,15 @@ WSGI_APPLICATION = 'vacc.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+IN_DOCKER = bool(os.environ.get('IN_DOCKER'))
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": os.environ.get("SQL_ENGINE", default="django.db.backends.sqlite3"),
+        "NAME": os.environ.get("SQL_DATABASE", default=os.path.join(BASE_DIR, "db.sqlite3")),
+        "USER": os.environ.get("SQL_USER", default="usap"),
+        "PASSWORD": os.environ.get("SQL_PASSWORD", default="usap"),
+        "HOST": os.environ.get("SQL_HOST", default="db" if IN_DOCKER else "localhost"),
+        "PORT": os.environ.get("SQL_PORT", default="5432"),
     }
 }
 

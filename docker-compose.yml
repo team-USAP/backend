@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+  web:
+    build: ./
+    command: python vacc/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./:/usr/src/app/
+    ports: 
+      - 8000:8000
+    depends_on:
+      - db
+    environment:
+      - IN_DOCKER=True
+      - DATABASE=postgres
+      - SQL_HOST=usap
+      - SQL_PORT=5432
+
+  db:
+    image: postgres:12.0-alpine
+    volumes:
+        - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=usap
+      - POSTGRES_PASSWORD=usap
+      - POSTGRES_DB=usap
+
+volumes:
+  postgres_data:
