@@ -12,9 +12,9 @@ RUN apk update \
     && apk add postgresql-dev gcc python3-dev musl-dev
 
 # install dependencies
-RUN pip install --upgrade pip
-COPY ./requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install pip==20.0.2
+COPY ./requirementsdocker.txt .
+RUN pip install --no-cache-dir -r requirementsdocker.txt
 
 # copy entrypoint.sh
 COPY ./entrypoint.sh .
