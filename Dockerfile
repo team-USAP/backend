@@ -12,9 +12,9 @@ RUN apk update \
     && apk add postgresql-dev gcc python3-dev musl-dev
 
 # install dependencies
-RUN pip install pip==20.0.2
+RUN pip install --upgrade pip --no-cache-dir
 COPY ./requirementsdocker.txt .
-RUN pip install --no-cache-dir -r requirementsdocker.txt
+RUN pip install -r requirementsdocker.txt --no-cache-dir
 
 # copy entrypoint.sh
 COPY ./entrypoint.sh .
@@ -23,4 +23,5 @@ COPY ./entrypoint.sh .
 COPY . .
 
 # run entrypoint.sh
+RUN chmod +rwx entrypoint.sh
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
