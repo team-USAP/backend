@@ -23,11 +23,10 @@ load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY', 'secret-key-of-at-least-50-characters-to-pass-check-deploy')
-print(SECRET_KEY)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -82,7 +81,7 @@ DATABASES = {
         "NAME": os.environ.get("SQL_DATABASE", default=os.path.join(BASE_DIR, "db.sqlite3")),
         "USER": os.environ.get("SQL_USER", default="usap"),
         "PASSWORD": os.environ.get("SQL_PASSWORD", default="usap"),
-        "HOST": os.environ.get("SQL_HOST", default="db" if IN_DOCKER else "localhost"),
+        "HOST": os.environ.get("SQL_HOST", default="db"),
         "PORT": os.environ.get("SQL_PORT", default="5432"),
     }
 }

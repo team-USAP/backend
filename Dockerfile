@@ -12,9 +12,9 @@ RUN apk update \
     && apk add postgresql-dev gcc python3-dev musl-dev
 
 # install dependencies
-RUN pip install --upgrade pip --no-cache-dir
+RUN pip install --upgrade pip
 COPY ./requirementsdocker.txt .
-RUN pip install -r requirementsdocker.txt --no-cache-dir
+RUN pip install -r requirementsdocker.txt
 
 # copy entrypoint.sh
 COPY ./entrypoint.sh .
