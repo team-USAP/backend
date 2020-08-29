@@ -10,23 +10,23 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-from pathlib import Path
 import os
-from decouple import config
+from dotenv import load_dotenv
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'yxuot*)&&8%_yl3s@k=9yu1ppzx9$v0i+2q8kz2iiyjw0h4++7'
-
+SECRET_KEY = os.environ.get('SECRET_KEY', 'secret-key-of-at-least-50-characters-to-pass-check-deploy')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', ]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,9 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    # Apps
-    'users.apps.UsersConfig'
 ]
 
 MIDDLEWARE = [
@@ -73,20 +70,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'vacc.wsgi.application'
 
+
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+IN_DOCKER = bool(os.environ.get('IN_DOCKER'))
 DATABASES = {
-
     "default": {
-        "ENGINE": config("SQL_ENGINE", "django.db.backends.sqlite3"),
-        "NAME": config("SQL_DATABASE", os.path.join(BASE_DIR, "db.sqlite3")),
-        "USER": config("SQL_USER", "user"),
-        "PASSWORD": config("SQL_PASSWORD", ""),
-        "HOST": config("SQL_HOST", "localhost"),
-        "PORT": config("SQL_PORT", "5432"),
+        "ENGINE": os.environ.get("SQL_ENGINE", default="django.db.backends.sqlite3"),
+        "NAME": os.environ.get("SQL_DATABASE", default=os.path.join(BASE_DIR, "db.sqlite3")),
+        "USER": os.environ.get("SQL_USER", default="usap"),
+        "PASSWORD": os.environ.get("SQL_PASSWORD", default="usap"),
+        "HOST": os.environ.get("SQL_HOST", default="db"),
+        "PORT": os.environ.get("SQL_PORT", default="5432"),
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -125,7 +124,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
 
 # Django Toolbar
 MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware', ]
