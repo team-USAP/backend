@@ -20,4 +20,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Docker image
-        run: docker-compose up
+        run: docker-compose up -f docker-compose-test.yml
