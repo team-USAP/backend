@@ -146,7 +146,8 @@ cython_debug/
 __pycache__/
 local_settings.py
 
-.env*
+.env
+.env.docker
 .vscode
 src/media/*
 !src/media/default.png

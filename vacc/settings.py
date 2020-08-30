@@ -14,7 +14,8 @@ import os
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))))
 load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 
@@ -22,7 +23,8 @@ load_dotenv(os.path.join(BASE_DIR, '.env'))
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', 'secret-key-of-at-least-50-characters-to-pass-check-deploy')
+SECRET_KEY = os.environ.get(
+    'SECRET_KEY', 'secret-key-of-at-least-50-characters-to-pass-check-deploy')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -32,12 +34,20 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    # Core Applications
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Users Config
+    'users.apps.UsersConfig',
+    'center.apps.CenterConfig',
+    'booking.apps.BookingConfig',
+
+
 ]
 
 MIDDLEWARE = [
