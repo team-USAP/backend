@@ -82,7 +82,7 @@ DATABASES = {
         "USER": os.environ.get("SQL_USER", default="usap"),
         "PASSWORD": os.environ.get("SQL_PASSWORD", default="usap"),
         "HOST": os.environ.get("SQL_HOST", default="db"),
-        "PORT": os.environ.get("SQL_PORT", default="5432"),
+        "PORT": int(os.environ.get("SQL_PORT", default="5432")),
     }
 }
 
@@ -124,29 +124,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
-# Django Toolbar
-MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware', ]
-INSTALLED_APPS += ['debug_toolbar', ]
-DEBUG_TOOLBAR_CONFIG = {
-    'DISABLE_PANELS': ['debug_toolbar.panels.redirects.RedirectsPanel', ],
-    'SHOW_TEMPLATE_CONTEXT': True,
-}
-
-INTERNAL_IPS = ['127.0.0.1', 'localhost']
-
-# Django Extensions
-INSTALLED_APPS += ['django_extensions', ]
-
-
-if os.environ.get('GITHUB_WORKFLOW'):
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'test_database',
-            'USER': 'test_user',
-            'PASSWORD': 'test_password',
-            'HOST': 'localhost',
-            'PORT': '5432',
-        }
-    }
