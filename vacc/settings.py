@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'center.apps.CenterConfig',
     'booking.apps.BookingConfig',
 
-
 ]
 
 MIDDLEWARE = [
