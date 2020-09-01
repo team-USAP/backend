@@ -5,7 +5,6 @@
 <h1>Team USAP</h1>
 
 
-
 # Vaccination System Backend 🚀
     
 Vaccination System Backend for solution of effective vaccination distribution.
