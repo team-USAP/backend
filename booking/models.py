@@ -1,5 +1,5 @@
 from django.contrib.gis.db import models
-from center.models import BaseUUIDTimeModel, City, Center
+from center.models import BaseUUIDTimeModel, City, Center, Slot
 from django.contrib.auth.models import User
 from users.models import Profile
 
@@ -15,12 +15,11 @@ class Appointment(BaseUUIDTimeModel):
         ('failed', 'Failed'),
         ('completed', 'Completed')
     ]
+
     profile = models.ForeignKey(Profile, on_delete=models.SET_NULL, null=True)
-    center = models.ForeignKey(Center, on_delete=models.CASCADE)
-    arrival_time = models.DateTimeField(null=True, blank=True)
-    leaving_time = models.DateTimeField(null=True, blank=True)
+    slot = models.ForeignKey(Slot, on_delete=models.SET_NULL, null=True)
     status = models.CharField(
         max_length=20,  choices=STATUS, default='pending',)
 
     def __str__(self):
-        return f'{self.center} {self.profile.user}'
+        return f'Appointment'

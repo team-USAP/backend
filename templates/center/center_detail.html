@@ -1,0 +1,39 @@
+{% extends "base_foc.html" %}
+{% load static %}
+{% block content %}
+ 
+ <section class="section">
+    <div class="container box ">
+    <figure class="image is-128x128">
+            <img class="is-rounded" src="{{center.logo.url}}">
+      </figure>
+      <h1 class="title">
+       {{center.name}}
+      </h1>
+      <p class="subtitle">
+       {{center.address}}, {{center.city.name}} , {{ center.city.state }}
+      </p>
+    </div>
+    <br>
+    {% for slot in slots %}
+    <div class="container box ">
+      <h1 class="title">
+       Slot : {{slot.start_time }} - {{slot.end_time}}
+      </h1>
+      <p class="subtitle">
+       Capacity Left : {{slot.capacity}} 
+      </p>
+        <div class="buttons ">
+        <a href="{% url 'create-appointments' slot.id %}"><button class="button is-medium is-link has-text-weight-bold"> Book Slot </button></a>
+    </div>
+    </div>
+  
+    <br>
+    {% endfor %}
+
+
+  </section>
+
+
+
+{% endblock content %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+ 
+ <section class="section">
+    <div class="container">
+      <h1 class="title">
+        Welcome to Vaxxer
+      </h1>
+      <p class="subtitle">
+       Solving the Distribution of COVID Vaccine Problem in India
+      </p>
+    </div>
+  </section>
+
+  <div class="tile is-ancestor">
+  <div class="tile is-vertical is-8">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification is-primary">
+          <p class="title">Let's be Honest</p>
+          <p class="subtitle">We all are aware that how covid-19 has affected us all in various ways and things are taken in track of normacly via NEW Vaccine</p>
+        </article>
+        <article class="tile is-child notification is-warning">
+          <p class="title">COVID Vaccine Appointments</p>
+          <p class="subtitle">We are here to get  you appointments for Vaccine in  a fast and predictable way, no waiting in lines just go in with social distancing requirements.
+          Don't forget to wear your Masks </p>
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child notification is-info">
+          <p class="title">TheSocial Distancing Era</p>
+          <p class="subtitle"> This Application is about Hope of Better Vaccinated distribution and rise of faith in Social Interaction</p>
+          <figure class="image is-4by3">
+            <img src="{% static 'images/index.png' %}">
+          </figure>
+        </article>
+      </div>
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child notification is-danger">
+        <p class="title">Saving the world from COVID-19 one Vaccination at a Time</p>
+        <p class="subtitle">Vaccine for All</p>
+        <div class="content">
+          <!-- Content -->
+        </div>
+      </article>
+    </div>
+  </div>
+  <div class="tile is-parent">
+    <article class="tile is-child notification is-success">
+      <div class="content">
+        <p class="title">Know how many people have been vaccinated in your locality</p>
+        <p class="subtitle">With Growing no. of people havving vaccines in your area 
+        you can trust about the future is hopefull and corona will be vindicated </p>
+        <div class="content">
+          <figure class="image is-4by3">
+            <img src="{% static 'images/index_com.png' %}">
+          </figure>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,53 @@
+
+{% extends "center/base.html" %}
+{% load crispy_forms_tags %}
+{% load bulma_tags %}
+{% block content %}
+
+<section class="section">
+    <div class="columns is-centered">
+        <div class="column is-half ">
+            <div class="content-section">
+            <h2 class="title">Create New Slot</h2>
+                <form method="POST">
+                     {% csrf_token %}
+                    <fieldset class="form-group">
+                        {{ form|bulma }}
+                    </fieldset>
+                    
+                    <div class="form-group ">
+                        <div class="control ">
+
+                            <button class="my-2  has-text-centered is-outlined button is-link is-fullwidth" type="submit">
+                                <strong>
+                                    <span class="icon mx-1 ">
+                                        <i class="fas fa-pen-alt"></i>
+                                    </span>
+                                    Create
+                                </strong>
+                            </button>
+                        </div>
+                        
+                    </div>
+                </form>
+                <div class="border-top py-4 ">
+                    <div class="text-muted ">
+                        <a class="button has-text-centered is-link is-fullwidth" href="{% url 'center-dashboard' %}" >
+                            <strong>
+                                <span class="icon mx-1 ">
+                                    <i class="is-small fas fas fa-arrow-left"></i>
+                                </span>
+                                 Back to Covid Center Dashboard
+                            </strong>
+                            </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+{% endblock content %}
+
+
+
+

@@ -1,0 +1,44 @@
+{% extends "center/base.html" %}
+{% block content %}
+ 
+
+ <section class="section">
+    <div class="container box ">
+    <figure class="image is-64x64 is-pulled-left my-2">
+            <img class="is-rounded" src="{{user.center.logo.url}}">
+      </figure>
+
+      <h1 class="title">
+       Welcome {{user.center.name}}
+      </h1>
+      <p class="subtitle">
+       {{user.center.address}}, {{user.center.city.name}} , {{ user.center.city.state }}
+      </p>
+      <div class="buttons ">
+        <a href="{% url 'slot-create'  %}"><button class="is-pulled-right button is-medium is-link has-text-weight-bold"> Create Slot </button></a>
+    </div>
+    </div>
+    <br>
+    {% for slot in slots %}
+    <div class="container box ">
+      <h1 class="title">
+       Slot : {{slot.start_time }} - {{slot.end_time}}
+      </h1>
+      <p class="subtitle">
+       Capacity Left : {{slot.capacity}} 
+      </p>
+        
+        <a href="{% url 'slot-delete' slot.id %}"><button class="is-is-pulled-left button is-danger is-link has-text-weight-bold"> Delete Slot </button></a>
+         <a href="{% url 'slot-detail' slot.id %}"><button class="is-is-pulled-right button is-link is-link has-text-weight-bold"> See Appointments </button></a>
+        
+    </div>
+  
+    <br>
+    {% endfor %}
+
+
+  </section>
+
+  
+
+{% endblock content %}

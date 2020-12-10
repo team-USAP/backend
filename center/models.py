@@ -88,6 +88,16 @@ class Center(BaseUUIDTimeModel):
         return reverse("Center_detail", kwargs={"pk": self.pk})
 
 
+class Slot(BaseUUIDTimeModel):
+    center = models.ForeignKey(Center, on_delete=models.CASCADE)
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
+    capacity = models.PositiveSmallIntegerField()
+
+    def __str__(self):
+        return f'{self.center} {self.start_time} {self.end_time}'
+
+
 # Views
 # Register - Multistage
 # Login - username , password - Center, User - dashboard

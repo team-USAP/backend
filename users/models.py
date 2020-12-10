@@ -9,14 +9,17 @@ class Profile(BaseUUIDTimeModel):
     GENDER_CHOICES = (
         ('M', 'Male'),
         ('F', 'Female'),
+        ('T', 'Transgender'),
+        ('U', 'Unknown'),
     )
     gender = models.CharField(
-        max_length=1, choices=GENDER_CHOICES, default=None)
-    phone_no = models.PositiveBigIntegerField()
-
+        max_length=1, choices=GENDER_CHOICES, default='U')
+    phone_no = models.PositiveBigIntegerField(null=True, blank=True)
+    aadhar_card = models.PositiveBigIntegerField(null=True, blank=True)
     dob = models.DateField(null=True, blank=True)
     address = models.CharField(max_length=50, blank=True)
-    city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True)
+    city = models.ForeignKey(
+        City, on_delete=models.SET_NULL, null=True, blank=True)
 
     covid_vacc = models.BooleanField(default=False)
     BLOOD = (
@@ -28,9 +31,10 @@ class Profile(BaseUUIDTimeModel):
         ('B-', 'B- Type'),
         ('AB-', 'AB- Type'),
         ('O-', 'O- Type'),
+        ('NA', 'Not Available')
 
     )
-    bloodType = models.CharField(max_length=10, choices=BLOOD, default=None)
+    bloodType = models.CharField(max_length=10, choices=BLOOD, default='NA')
     allergy = models.CharField(max_length=100, null=True, blank=True)
     alzheimer = models.BooleanField(default=False)
     asthma = models.BooleanField(default=False)

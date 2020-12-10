@@ -1,6 +1,6 @@
 
 from django.contrib import admin
-from .models import Center, City
+from .models import Center, City, Slot
 from django.contrib.gis.admin import OSMGeoAdmin
 from django.contrib import admin
 
@@ -16,3 +16,8 @@ class ShopAdmin(OSMGeoAdmin):
 class CityAdmin(admin.ModelAdmin):
     list_display = ('name', 'state')
     search_fields = ('name', 'state')
+
+
+@admin.register(Slot)
+class SlotAdmin(admin.ModelAdmin):
+    list_display = ('center', 'start_time', 'end_time', 'capacity')

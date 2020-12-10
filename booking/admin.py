@@ -11,16 +11,7 @@ class AppointmentAdmin(admin.ModelAdmin):
         'created_date',
         'modified_date',
         'profile',
-        'center',
-        'arrival_time',
-        'leaving_time',
+        'slot',
         'status',
     )
-    list_filter = (
-        'created_date',
-        'modified_date',
-        'profile',
-        'center',
-        'arrival_time',
-        'leaving_time',
-    )
+    list_filter = ('created_date', 'modified_date', 'profile', 'slot')
