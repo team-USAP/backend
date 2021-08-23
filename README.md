@@ -92,7 +92,7 @@ We use [SemVer](http://semver.org/) for versioning.
 * **Shreshth Arora** - *Idea & Backend & Deployment* - [AroraShreshth](https://github.com/AroraShreshth)
 * **Parth Shah** - *Backend Django and React Native* - [parthsujalshah](https://github.com/parthsujalshah)
 * **Aakash Agarwal** - *React Native* - [Aakash310](https://github.com/Aakash310)
-* **Uttaran Sarkar** - *Idea and React Native* - [uttaransarkar](https://github.com/uttaransarkar)
+* **Uttaran Sarkar** - *Idea and Backend Django* - [uttaransarkar](https://github.com/uttaransarkar)
 
 ##Design
 

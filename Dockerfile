@@ -9,13 +9,13 @@ ENV PYTHONUNBUFFERED 1
 
 # install psycopg2 dependencies
 RUN apk update \
-    && apk add postgresql-dev gcc python3-dev musl-dev
+    && apk add postgresql-dev gcc python3-dev musl-dev jpeg-dev zlib-dev libjpeg 
 
 # install dependencies
 RUN pip install --upgrade pip
-COPY ./requirementsdocker.txt .
-RUN pip install -r requirementsdocker.txt
-
+COPY ./requirements.txt .
+RUN pip install -r requirements.txt
+#RUN apk del build-deps
 # copy entrypoint.sh
 COPY ./entrypoint.sh .
 
