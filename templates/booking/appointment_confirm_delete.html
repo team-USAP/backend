@@ -1,0 +1,67 @@
+
+{% extends "base_foc.html" %}
+{% load crispy_forms_tags %}
+{% load bulma_tags %}
+{% block content %}
+
+
+
+<section class="section">
+    <div class="columns is-centered">
+        <div class="column is-half ">
+            <div class="content-section">
+                <form method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        
+                        <h2 class="title">Are you sure you want to delete ?</h2>
+                        
+                        <div class="box mb-3">            
+                            <h4 class='is-size-4'>
+                                {{ap.slot.center.name}} Appointment |  <small>Updated at : {{ap.modified_date}}</small>
+                            </h4>
+                        
+                            <p class="mt-2 is-italic">
+                            {{ap.slot.start_time}} - {{ap.slot.end_time}}
+            
+                            </p>
+
+                        </div>
+                    </fieldset>
+   
+                    <div class="form-group ">
+                        <div class="control ">
+
+                            <button class="my-2  has-text-centered is-outlined button is-danger is-fullwidth" type="submit">
+                                <strong>
+                                    <span class="icon mx-1 ">
+                                        <i class="fas fa-times-circle"></i>
+                                    </span>
+                                    Yes, Delete
+                                </strong>
+                            </button>
+                        </div>
+                        
+                    </div>
+                </form>
+                <div class="border-top py-4 ">
+                    <div class="text-muted ">
+                        <a class="button has-text-centered is-link is-fullwidth" href="{% url 'appointments' %}" >
+                            <strong>
+                                <span class="icon mx-1 ">
+                                    <i class="is-small fas fas fa-arrow-left"></i>
+                                </span>
+                                 Back to All Appointments
+                            </strong>
+                            </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+{% endblock content %}
+
+
+
+

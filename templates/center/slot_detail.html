@@ -1,0 +1,59 @@
+{% extends "center/base.html" %}
+{% load static %}
+{% block content %}
+ 
+ <section class="section">
+    <div class="container">
+      <h1 class="title">
+     For Slot: {{slot.start_time}} - {{slot.end_time}} (Appointments: {{no_app}})
+      </h1>
+      <p class="subtitle">
+       Below are your Appointments your COVID VACCINE : {{slot.center.name}}
+
+      </p>
+    </div>
+    
+<div class="container">
+
+{% for ap in app %}
+    <div class="box">
+  <article class="media">
+    <div class="media-left">
+      <figure class="image is-64x64">
+        <img src="{{ap.slot.center.logo.url}}" alt="Image">
+      </figure>
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong>{{ap.slot.center.name}}</strong>  <small>Updated at : {{ap.modified_date}}</small>
+          <br>
+          From : {{ap.slot.start_time}} - {{ap.slot.end_time}}
+          <br>
+            At: {{ap.slot.center.address}}, {{ap.slot.center.city.name}}, {{ap.slot.center.city.state}}
+        </p>
+
+      </div>
+        <div class="buttons level-right">
+        <a href="{% url 'app-update' ap.id %}"><button class="button is-normal is-danger has-text-weight-bold"> Update Appointment </button></a>
+        </div>
+      <nav class="level is-mobile">
+        <div class="level-left">
+            STATUS : <strong> {{ap.status}} </strong>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </article>
+</div>
+{% endfor %}
+{% if not no_app %}
+       <figure class="image is-1028x1028">
+        <img src="{% static 'images/empty.png' %}" alt="Image">
+      </figure>
+    {% endif %}
+</div>
+</div>
+  </section>
+
+{% endblock content%}

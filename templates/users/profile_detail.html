@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block content %}
+ 
+ <section class="section">
+    <div class="container">
+      <h1 class="title">
+        Your Profile {{ user.get_username }} 
+        <div class="buttons level-right">
+           <a href="{% url 'profile-update'%}"> <button class="button is-info has-text-weight-bold" >Update </button></a>
+        </div>
+      </h1>
+
+      <p class="subtitle">
+      <div class=" box">
+                <p class="subtitle has-text-centered ">
+                <strong> COVID VACCINATION STATUS:</strong> 
+                {{profile.covid_vacc}}
+                {% if  profile.covid_vacc %}
+                    <span class="icon has-text-success">
+                       <i class="fa fa-check red" aria-hidden="true"></i>                
+                    </span>
+                {% else %}
+                    <span class="icon has-text-danger">
+                       <i class="fa fa-times-circle red" aria-hidden="true"></i>                
+                        </span>
+                {% endif %}
+                </p>
+        </div>
+        <div class="tile is-ancestor">
+            <div class="tile is-4 is-vertical is-parent">
+                <div class="tile is-child box">
+                <p class="subtitle"> <strong> Gender: </strong>{{profile.gender}}</p>
+                </div>
+                <div class="tile is-child box">
+                <p class="subtitle"><strong>Phone No:</strong> {{profile.phone_no}}</p>
+                </div>
+                <div class="tile is-child box">
+                <p class="subtitle"><strong>DOB:</strong> {{profile.dob}}</p>
+                </div>
+            </div>
+            <div class="tile is-4 is-vertical is-parent">
+                <div class="tile is-child box">
+                <p class="subtitle"> <strong>Address: </strong>{{profile.address}} , {{ profile.city}}</p>
+                </div>
+                <div class="tile is-child box">
+                <p class="subtitle"><strong>Allergy: </strong> {{profile.allergy}}</p>
+                </div>
+                <div class="tile is-child box">
+                <p class="subtitle"><strong>DOB:</strong> {{profile.dob}}</p>
+                </div>
+            </div>
+            <div class="tile is-4 is-vertical is-parent">
+                <div class="tile is-child box">
+                <p class="subtitle"> <strong>Alzheimer: </strong>{{profile.alzheimer}} </p>
+                </div>
+                <div class="tile is-child box">
+                <p class="subtitle"><strong>Asthma: </strong> {{profile.asthma}}</p>
+                </div>
+                <div class="tile is-child box">
+                <p class="subtitle"><strong>Diabetes:</strong> {{profile.diabetes}}</p>
+                </div>
+            </div>
+            </div>
+      </p>
+    </div>
+  </section>
+
+{% endblock content %}

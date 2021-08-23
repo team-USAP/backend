@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+ 
+ <section class="section">
+    <div class="container box ">
+      <h1 class="title">
+       Vaccination Centers Nearby
+      </h1>
+      <p class="subtitle">
+       Here are some Vaccination Center's from your vicinity of {{ user.profile.city.name }} , browse them and choose on the basis of your comfort
+      </p>
+    </div>
+
+  </section>
+
+<section class="section">
+    
+{% for center in centers %}
+    <div class="container bpx ">
+      <h1 class="title ">
+      <figure class="image is-128x128">
+            <img class="is-rounded" src="{{center.logo.url}}">
+      </figure>
+       {{ center.name }}
+       <div class="buttons level-right">
+        <a href="{% url 'center-detail' center.id %}"><button class="button is-medium is-link has-text-weight-bold"> View Available Slots </button></a>
+        {% comment %} <button class="button is-medium is-link has-text-weight-bold">Link</button> {% endcomment %}
+        </div>
+      </h1>
+
+      <p class="subtitle">
+       {{center.address}}, {{center.city.name}} , {{ center.city.state }}
+      </p>
+
+  
+    <br>
+    </div>
+{% endfor %}
+
+  
+  </section>
+
+
+
+{% endblock content %}

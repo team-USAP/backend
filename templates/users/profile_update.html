@@ -1,0 +1,47 @@
+{% extends "base_foc.html" %}
+{% load crispy_forms_tags %}
+{% load bulma_tags %}
+{% block content %}
+
+<section class="section">
+    <div class="container has-text-centered">
+        <h1 class="title">
+            Complete Your Medical Profile
+        </h1>
+        <p class="subtitle">
+          We are collecting this info so that you can have a good experience while gettinng vaccines <br>
+          hospitals can provide you effective care if required.
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="columns is-centered">
+        <div class="column is-half ">
+            <div class="content-section">
+                <form method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        {{ form|bulma }}
+                    </fieldset>
+                    <div class="form-group ">
+                        <div class="control ">
+
+                            <button class="my-2  has-text-centered button is-link is-fullwidth" type="submit">
+                                <strong>
+                                    Submit
+                                </strong>
+                            </button>
+                        </div>
+                        <br>
+                        <small>
+                            This page is protected by Google reCAPTCHA to ensure you're not a bot
+                        </small>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+</section>
+
+{% endblock content %}

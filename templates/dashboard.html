@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+ 
+ <section class="section">
+    <div class="container">
+      <h1 class="title ">
+      <div class="level-left">
+      Welcome {{ user.get_username }},
+      </div>
+        
+        <div class="buttons level-right">
+           <a href="{% url 'profile'%}"> <button class="button is-info has-text-weight-bold" > Your Profile </button></a>
+        </div>
+      </h1>
+    </div>
+
+    
+  </section>
+
+  <section class="section">
+    <div class="container">
+    <div class="tile is-ancestor">
+  <div class="tile is-5 is-vertical is-parent">
+    <div class="tile is-child box">
+      <p class="title">Vaccinated People (Radius)</p>
+    </div>
+    <div class="tile is-child box">
+      <p class="is-size-3">500m Radius: {{vacc_500 }}</p>
+    </div>
+    <div class="tile is-child box">
+      <p class="is-size-3">1km Radius: {{ vacc_1000 }}</p>
+    </div>
+    <div class="tile is-child box">
+      <p class="is-size-3">5km Radius: {{ vacc_5000 }}</p>
+    </div>
+  </div>
+  <div class="tile is-parent">
+
+  <div class="tile is-parent">
+    <div class="tile is-child box">
+      <p class="title">Safety Precautions: </p>
+      <p> COVID-19 affects different people in different ways. Most infected people will develop mild to moderate illness and recover without hospitalization. </p>
+      <br>
+      <p> Most common symptoms:
+      fever
+      dry cough
+      tiredness
+      </p>
+      <br>
+      <p> Less common symptoms:
+          aches and pains
+          sore throat
+          diarrhoea
+          conjunctivitis
+          headache
+          loss of taste or smell
+          a rash on skin, or discolouration of fingers or toes
+      </p>
+      <br>
+      <p>Serious symptoms:
+      difficulty breathing or shortness of breath
+        chest pain or pressure
+    loss of speech or movement
+
+      </p>
+
+
+    </div>
+  </div>
+</div>
+    </div>
+  </section>
+
+  
+
+{% endblock content %}
