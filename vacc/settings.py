@@ -3,12 +3,9 @@ import os
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-<<<<<<< HEAD
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-=======
-BASE_DIR = os.path.dirname(os.path.dirname(
-    os.path.dirname(os.path.abspath(__file__))))
->>>>>>> 429fc0779394fe46d57fec181e4bd29a4de72479
+
 load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 
@@ -34,7 +31,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
     'django.contrib.gis',
     'bulma',
     'crispy_forms',
@@ -43,13 +39,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'center.apps.CenterConfig',
     'booking.apps.BookingConfig',
-=======
 
-    # Users Config
-    # 'users.apps.UsersConfig',
-    # 'center.apps.CenterConfig',
-    # 'booking.apps.BookingConfig',
->>>>>>> 429fc0779394fe46d57fec181e4bd29a4de72479
 
 ]
 
